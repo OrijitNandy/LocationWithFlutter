@@ -11,7 +11,21 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
   void _onMapCreated(GoogleMapController controller) {
     setState(() {
       _markers.add(Marker(
-          markerId: MarkerId('ID-1'), position: LatLng(22.3569, 91.7832)));
+        markerId: MarkerId('ID-1'),
+        position: LatLng(22.342127, 91.830522),
+      ));
+    });
+    setState(() {
+      _markers.add(Marker(
+        markerId: MarkerId('ID-2'),
+        position: LatLng(22.347923, 91.833883),
+      ));
+    });
+    setState(() {
+      _markers.add(Marker(
+        markerId: MarkerId('ID-3'),
+        position: LatLng(22.342088, 91.836738),
+      ));
     });
   }
 
@@ -25,6 +39,6 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
             onMapCreated: _onMapCreated,
             markers: _markers,
             initialCameraPosition:
-                CameraPosition(target: LatLng(22.3569, 91.7832), zoom: 15)));
+                CameraPosition(target: LatLng(22.3569, 91.7832), zoom: 10)));
   }
 }
