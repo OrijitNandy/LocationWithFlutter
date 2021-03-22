@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.project_map_v0">
    <application
-        android:label="project_map_v0"
+        android:label="project_map_v0.00002"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyBBLXO15UihJMPqA4mCzuI1_mOBMjVdtKY"/>

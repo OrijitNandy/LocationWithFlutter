@@ -27,21 +27,20 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Location Marking',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Please press the button to view the marked locations',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.justify,
+              ),
+            ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => GoogleMapPage())),
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+          onPressed: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => GoogleMapPage())),
+          tooltip: 'Increment',
+          child: Icon(Icons.map_rounded)),
     );
   }
 }
