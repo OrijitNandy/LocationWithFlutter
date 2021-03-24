@@ -7,31 +7,40 @@ class GoogleMapPage extends StatefulWidget {
 }
 
 class _GoogleMapPageState extends State<GoogleMapPage> {
-  Set<Marker> _markers = {};
+  Map<MarkerId, Marker> markers = {};
+  List listMarkerIds = List.filled(500, 0, growable: true);
+  static final LatLng _center = const LatLng(22.342088, 91.836738);
+
   void _onMapCreated(GoogleMapController controller) {
+    MarkerId markerId1 = MarkerId("1");
+    MarkerId markerId2 = MarkerId("2");
+    MarkerId markerId3 = MarkerId("3");
+
+    listMarkerIds.add(markerId1);
+    listMarkerIds.add(markerId2);
+    listMarkerIds.add(markerId3);
+    Marker marker1 = Marker(
+        markerId: markerId1,
+        position: LatLng(22.348002, 91.833913),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+        infoWindow: InfoWindow(
+            title: "Jamal Khan Circle", snippet: "22.348002, 91.833913"));
+    Marker marker2 = Marker(
+      markerId: markerId2,
+      position: LatLng(22.342162, 91.830539),
+      infoWindow:
+          InfoWindow(title: "DC Hill Circle", snippet: "22.342162, 91.830539"),
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+    );
+    Marker marker3 = Marker(
+        markerId: markerId3,
+        position: LatLng(22.342117, 91.836728),
+        infoWindow: InfoWindow(
+            title: "Anderkilla Circle", snippet: "22.342117, 91.836728"));
     setState(() {
-      _markers.add(Marker(
-          markerId: MarkerId('ID-1'),
-          position: LatLng(22.342127, 91.830522),
-          infoWindow: InfoWindow(
-              title: "DC Hill Circle,Chattogram",
-              snippet: '22.342127, 91.830522')));
-    });
-    setState(() {
-      _markers.add(Marker(
-          markerId: MarkerId('ID-2'),
-          position: LatLng(22.347923, 91.833883),
-          infoWindow: InfoWindow(
-              title: "Jamal Khan Circle,Chattogram,",
-              snippet: "22.347923, 91.833883")));
-    });
-    setState(() {
-      _markers.add(Marker(
-          markerId: MarkerId('ID-3'),
-          position: LatLng(22.342088, 91.836738),
-          infoWindow: InfoWindow(
-              title: "Anderkilla Circle,Chattogram",
-              snippet: "22.342088, 91.836738")));
+      markers[markerId1] = marker1;
+      markers[markerId2] = marker2;
+      markers[markerId3] = marker3;
     });
   }
 
@@ -43,8 +52,8 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
         ),
         body: GoogleMap(
             onMapCreated: _onMapCreated,
-            markers: _markers,
-            initialCameraPosition: CameraPosition(
-                target: LatLng(22.342088, 91.836738), zoom: 12)));
+            markers: Set.of(markers.values),
+            initialCameraPosition:
+                CameraPosition(target: _center, zoom: 12.toDouble())));
   }
 }
