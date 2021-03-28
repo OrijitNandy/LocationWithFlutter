@@ -21,7 +21,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
       return randomInt;
     }
 
-    Future<void> buildMarker() async {
+    buildMarker() {
       var gridItem;
       for (var i = 0; i < gridItem.location.length; i++) {
         var markerIdVal = generateIds();
